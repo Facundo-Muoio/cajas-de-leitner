@@ -1,0 +1,49 @@
+.card-review {
+	width: 100%;
+	height: auto;
+	display: flex;
+	padding: 0.5em;
+	justify-content: space-between;
+	cursor: pointer;
+	transition: all 0.5 ease;
+	margin-bottom: 0.5em;
+}
+
+.card-review:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+	border-radius: 12px;
+}
+
+.revision-dateTime {
+	font-size: 0.75rem;
+	font-weight: 400;
+	letter-spacing: 1px;
+	color: var(--third-bg-color);
+}
+
+.revision-name {
+	font-size: 1rem;
+	font-weight: 600;
+}
+
+.card-review-leftside {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.card-review-rightside {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	font-size: 1rem;
+	font-weight: 400;
+}
+
+.card-review-rightside p {
+	color: var(--third-bg-color);
+}
+
+.arrow-card-review {
+	font-size: 1.5rem;
+}

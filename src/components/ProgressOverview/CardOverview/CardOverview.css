@@ -1,0 +1,23 @@
+.card-overview {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--third-black-color);
+	border-radius: 24px;
+	color: var(--white-color);
+	padding: 2em 0.5em;
+	flex: 1;
+}
+
+.card-label {
+	color: var(--secondary-bg-color);
+	font-size: 1rem;
+	font-weight: 400;
+}
+
+.card-overview > .content {
+	font-size: 2.5rem;
+	font-weight: 700;
+}

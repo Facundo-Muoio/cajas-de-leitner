@@ -1,0 +1,204 @@
+.container-signup-form {
+	display: flex;
+	max-width: 1200px;
+	height: 90vh;
+	position: relative;
+	margin-inline: auto;
+	margin-block: 5vh;
+	border: 1px solid transparent;
+	border-radius: 24px;
+}
+
+.container-leftSide {
+	max-width: 50%;
+	width: 50%;
+}
+
+.container-rigthSide {
+	min-width: 50%;
+	max-width: 50%;
+	width: 50%;
+	display: flex;
+	justify-content: center;
+	background-color: var(--secondary-black-color);
+	border-radius: 0 24px 24px 0;
+}
+
+.container-leftSide img {
+	min-height: 100%;
+	object-fit: cover;
+	border-radius: 24px 0 0 24px;
+}
+
+.container-success-signup {
+	color: var(--white-color);
+	padding: 2em;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 1em;
+}
+
+.container-success-signup h2 {
+	color: var(--third-bg-color);
+	letter-spacing: 1px;
+}
+
+.container-success-signup p {
+	font-weight: 500;
+}
+
+.oAuth-form {
+	background-color: var(--secondary-black-color);
+	max-width: 500px;
+	color: var(--white-color);
+	padding: 2em;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1.5rem;
+	height: 100%;
+}
+
+.oAuth-subTitle {
+	width: 75%;
+	font-weight: 300;
+}
+
+.oAuth-form input {
+	padding: 1em;
+	border-radius: 24px;
+	background-color: var(--secondary-black-color);
+	outline: none;
+	border: 1px solid var(--third-black-color);
+	color: var(--white-color);
+	transition: all 0.3s ease;
+	width: 100%;
+}
+
+.input-group {
+	width: 80%;
+	position: relative;
+}
+
+.input-group label {
+	text-align: center;
+	position: absolute;
+	left: 1rem;
+	top: 0.5rem;
+	color: var(--grey-bg-color);
+	background-color: transparent;
+	transition: all 0.3s ease;
+	font-size: 1rem;
+}
+
+.input-group input:focus {
+	border: 1px solid var(--white-color);
+}
+
+.input-group input:focus ~ label,
+.input-group input:valid ~ label {
+	top: -0.9rem;
+	left: 1rem;
+	background-color: var(--secondary-black-color);
+	color: var(--white-color);
+	padding: 0 0.2em;
+	font-size: 0.875rem;
+}
+
+.input-group input:not(:focus) ~ label {
+	color: var(--grey-bg-color);
+}
+
+.filled ~ label {
+	top: -0.9rem;
+	left: 1rem;
+	background-color: var(--secondary-black-color);
+	font-size: 0.875rem;
+	padding: 0 0.2em;
+}
+
+.error-message {
+	color: var(--third-bg-color);
+	font-size: 0.875rem;
+	margin-top: 0.25rem;
+	margin-left: 1rem;
+}
+
+.input-error label {
+	color: var(--third-bg-color) !important;
+}
+
+.input-error input {
+	border: 1px solid var(--third-bg-color) !important;
+}
+
+.oAuth-form button {
+	width: 80%;
+	background-color: var(--third-bg-color);
+	border: none;
+	color: var(--primary-bg-color);
+	padding: 0.5em 1em;
+	border-radius: 24px;
+	cursor: pointer;
+	font-family: "Mona Sans Variable";
+	font-weight: 500;
+}
+
+.oAuth-form button[type="submit"] {
+	font-size: 1.15rem;
+	outline: none;
+}
+
+.oAuth-anchor-form {
+	color: var(--third-bg-color);
+	cursor: pointer;
+}
+
+.oAuth-o-container {
+	display: flex;
+	flex-direction: row;
+}
+
+.oAuth-divider {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: nowrap;
+	gap: 0.5em;
+	width: 80%;
+}
+
+.oAuth-divider hr {
+	border: none;
+	width: 100%;
+	height: 1px;
+	background-color: var(--grey-bg-color);
+}
+
+.oAuth-divider span {
+	font-weight: 300;
+	flex-grow: 1;
+	min-width: fit-content;
+	color: var(--grey-bg-color);
+}
+
+.container-group-btns {
+	display: flex;
+	width: 80%;
+	gap: 0.5em;
+	justify-content: space-between;
+}
+
+.container-group-btns button {
+	cursor: pointer;
+	border-radius: 0.5rem;
+	padding-block: 0.65em;
+	display: flex;
+	justify-content: center;
+}
+
+.oAuth-icon-button {
+	font-size: 1.25rem;
+}

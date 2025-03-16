@@ -1,0 +1,38 @@
+.streak-month {
+	display: flex;
+	max-height: 100%;
+	min-width: 95px;
+	flex-direction: column;
+}
+
+.aka-month {
+	font-size: 0.75rem;
+	display: flex;
+	justify-content: center;
+}
+
+.streak-grid-days {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex-wrap: wrap;
+	max-height: 134px;
+	max-width: fit-content;
+	width: fit-content;
+	gap: 0.3em;
+	margin-top: 6px;
+}
+
+.empty-square {
+	width: 15px;
+	height: 15px;
+	background-color: transparent;
+	border-radius: 2px;
+}
+
+.square-day {
+	width: 15px;
+	height: 15px;
+	border-radius: 2px;
+	background-color: #161b22;
+}

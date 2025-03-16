@@ -1,0 +1,7 @@
+.progressOverview {
+	background-color: transparent;
+	width: 100%;
+	display: flex;
+	gap: 0.5em;
+	flex-wrap: wrap;
+}

@@ -1,0 +1,69 @@
+.box {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 1.5em;
+	flex: 0 0 384px;
+	background-color: rgba(255, 255, 255, 0.1);
+	border-radius: 24px;
+	min-height: 300px;
+}
+
+.box-header {
+	display: flex;
+	justify-content: space-between;
+}
+
+.box-header h2 {
+	font-size: 1.25rem;
+	font-weight: 500;
+}
+
+.box-header button:first-child {
+	margin-right: 0.5em;
+}
+
+.box-content {
+	font-size: 0.85rem;
+	color: var(--grey-bg-color);
+}
+
+.box-footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-top: 1px solid var(--grey-bg-color);
+	padding-top: 1.5em;
+}
+
+.box-footer span {
+	font-weight: 500;
+}
+
+.box-footer button {
+	font-family: "Mona Sans Variable";
+	font-weight: 500;
+	border: 2px solid var(--third-bg-color);
+	color: var(--primary-bg-color);
+	background-color: var(--third-bg-color);
+	border-radius: 24px;
+	padding: 0.5em 1em;
+	cursor: pointer;
+}
+
+.box-buttons button {
+	border: none;
+	padding: 0.25em;
+	background-color: transparent;
+}
+
+.box-icon-button {
+	font-size: 1rem;
+	color: var(--third-bg-color);
+	cursor: pointer;
+	background-color: transparent;
+}
+
+.box-icon-button:hover {
+	color: var(--third-bg-color);
+}

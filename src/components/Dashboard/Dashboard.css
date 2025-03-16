@@ -1,0 +1,80 @@
+.container-dashboard {
+	width: 100%;
+	max-width: 1250px;
+	font-size: 1rem;
+	background-color: var(--secondary-black-color);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: grid;
+	/* grid-template-columns: repeat(5, 1fr);
+	grid-template-rows: 10px 1fr 1fr 1fr 1fr; */
+	grid:
+		"navbar navbar navbar navbar navbar"
+		"progressOverview progressOverview progressOverview reviews reviews"
+		"slider-boxes slider-boxes  slider-boxes reviews reviews"
+		" learning-progress learning-progress streak-container streak-container streak-container"
+		"learning-progress learning-progress phrase phrase phrase";
+	grid-template-rows: auto 1fr auto 1.5fr 1fr;
+	gap: 1em;
+	padding: 1.5em;
+	overflow: auto;
+	/* height: auto !important;
+	min-height: auto !important; */
+}
+
+.container-dashboard,
+.progressOverview,
+.slider-boxes,
+.learning-progress,
+.reviews,
+.streak-container {
+	border-radius: 24px;
+	min-height: 100%;
+	height: 100%;
+}
+
+.navbar {
+	grid-area: navbar;
+	border-radius: 30px;
+	background-color: #2f2f2f;
+	background-color: aqua;
+	min-height: 100%;
+	height: 100%;
+}
+.progressOverview {
+	grid-area: progressOverview;
+	background-color: rebeccapurple;
+}
+.slider-boxes {
+	grid-area: slider-boxes;
+}
+.learning-progress {
+	grid-area: learning-progress;
+	background-color: yellow;
+}
+.reviews {
+	grid-area: reviews;
+	background-color: green;
+}
+.streak-container {
+	grid-area: streak-container;
+	background-color: darkblue;
+}
+
+.phrase {
+	grid-area: phrase;
+}
+
+@media screen and (max-width: 1250px) {
+	/* .container-dashboard {
+		border-radius: 0px;
+		grid:
+			"navbar navbar  navbar navbar"
+			"progressOverview progressOverview reviews reviews"
+			"slider-boxes slider-boxes   reviews reviews"
+			" learning-progress learning-progress learning-progress streak-container streak-container"
+			"learning-progress learning-progress learning-progress phrase phrase";
+	} */
+}

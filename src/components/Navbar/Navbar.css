@@ -1,0 +1,20 @@
+.navbar {
+	width: 100%;
+	font-size: 1rem;
+	padding: 1em 2em;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	color: var(--white-color);
+	background-color: var(--third-black-color);
+	position: relative;
+}
+
+.navbar-mobile {
+	flex-direction: row-reverse;
+}
+
+.container-logo {
+	z-index: 2;
+}

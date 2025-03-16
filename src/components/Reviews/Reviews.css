@@ -1,0 +1,45 @@
+.reviews {
+	width: 100%;
+	min-width: 350px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	gap: 0.5em;
+	padding: 1em;
+	background-color: var(--third-black-color);
+	color: var(--white-color);
+	font-size: 1rem;
+}
+
+.container-reviews {
+	overflow-y: scroll;
+}
+
+.container-reviews::-webkit-scrollbar {
+	width: 0.35em;
+}
+
+.container-reviews::-webkit-scrollbar-track {
+	background: transparent;
+	border-radius: 24px;
+}
+
+.container-reviews:hover::-webkit-scrollbar-thumb {
+	background: rgba(0, 0, 0, 0.2);
+	border-radius: 24px;
+	transition: background 0.3s ease-in-out;
+}
+
+.header-review {
+	font-size: 1.25rem;
+	font-weight: 500;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.5em;
+}
+
+.icon-review {
+	margin-left: auto;
+	font-size: 2rem;
+}

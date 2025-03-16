@@ -1,0 +1,77 @@
+.wraper-boxes {
+	width: 100%;
+	max-width: 1250px;
+	min-height: 95vh;
+	background-color: var(--third-black-color);
+	margin: 2.5vh auto;
+	border-radius: 24px;
+}
+
+.boxes {
+	width: 100%;
+	margin: 0 auto;
+	color: var(--white-color);
+	display: flex;
+	flex-direction: column;
+	padding: 2em;
+	overflow-y: auto;
+}
+
+.boxes::-webkit-scrollbar {
+	width: 0.35em;
+}
+
+.boxes::-webkit-scrollbar-track {
+	background: transparent;
+	border-radius: 24px;
+}
+
+.boxes:hover::-webkit-scrollbar-thumb {
+	background: rgba(0, 0, 0, 0.2);
+	border-radius: 24px;
+	transition: background 0.3s ease-in-out;
+}
+
+.boxes::-webkit-scrollbar-thumb:hover {
+	background: rgba(0, 0, 0, 0.4);
+}
+
+.boxes-header {
+	font-weight: 500;
+	text-align: center;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 2em;
+}
+
+.boxes-header h2 {
+	font-size: 1.5rem;
+}
+
+.boxes-header button {
+	border: 2px solid var(--third-bg-color);
+	color: var(--primary-bg-color);
+	background-color: var(--third-bg-color);
+	border-radius: 24px;
+	padding: 0.5em 1em;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	font-weight: 700;
+	font-family: "Mona Sans Variable", sans-serif;
+}
+
+.boxes-header button:hover {
+	background-color: var(--third-bg-color);
+	color: var(--primary-bg-color);
+}
+
+.boxes-content {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 1em;
+}

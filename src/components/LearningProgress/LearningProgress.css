@@ -1,0 +1,66 @@
+.learning-progress {
+	width: 100%;
+	padding: 1em;
+	background-color: var(--third-black-color);
+	color: var(--white-color);
+}
+
+.container-learning-progress {
+	padding: 1em;
+	max-height: 100%;
+	overflow-y: scroll;
+}
+
+.container-learning-progress::-webkit-scrollbar {
+	width: 0.35em;
+}
+
+.container-learning-progress::-webkit-scrollbar-track {
+	background: transparent;
+	border-radius: 24px;
+}
+
+.container-learning-progress:hover::-webkit-scrollbar-thumb {
+	background: rgba(0, 0, 0, 0.2);
+	border-radius: 24px;
+	transition: background 0.3s ease-in-out;
+}
+
+.container-learning-progress::-webkit-scrollbar-thumb:hover {
+	background: rgba(0, 0, 0, 0.4);
+}
+
+.first-row,
+.second-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	margin-bottom: 2em;
+	gap: 0.5em;
+	overflow: auto;
+}
+
+.first-row > div > h2 {
+	font-size: 1.25rem;
+	font-weight: 500;
+	color: var(--white-color);
+}
+
+.first-row > div > p {
+	font-size: 0.9rem;
+	font-weight: 400;
+}
+
+.frequency-button {
+	margin-right: 0.5em;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 24px;
+	padding: 0.5em 1em;
+	cursor: pointer;
+	font-size: 0.75rem;
+}
+
+.frequency-button:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
