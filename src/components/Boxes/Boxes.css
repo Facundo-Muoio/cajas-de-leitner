@@ -1,10 +1,16 @@
 .wraper-boxes {
 	width: 100%;
 	max-width: 1250px;
-	min-height: 95vh;
-	background-color: var(--third-black-color);
+	max-height: 95vh;
+	background-color: var(--primary-bg-color);
 	margin: 2.5vh auto;
 	border-radius: 24px;
+	overflow: hidden;
+}
+
+.container-navbar {
+	padding-inline: 2em;
+	padding-top: 2em;
 }
 
 .boxes {
@@ -21,12 +27,22 @@
 	width: 0.35em;
 }
 
-.boxes::-webkit-scrollbar-track {
+.boxes-content::-webkit-scrollbar {
+	width: 0px;
+}
+
+.boxes-content:hover::-webkit-scrollbar {
+	width: 0.25em;
+}
+
+.boxes::-webkit-scrollbar-track,
+.boxes-content::-webkit-scrollbar-track {
 	background: transparent;
 	border-radius: 24px;
 }
 
-.boxes:hover::-webkit-scrollbar-thumb {
+.boxes:hover::-webkit-scrollbar-thumb,
+.boxes-content::-webkit-scrollbar-thumb {
 	background: rgba(0, 0, 0, 0.2);
 	border-radius: 24px;
 	transition: background 0.3s ease-in-out;
@@ -34,6 +50,14 @@
 
 .boxes::-webkit-scrollbar-thumb:hover {
 	background: rgba(0, 0, 0, 0.4);
+}
+
+.boxes-content::-webkit-scrollbar-thumb {
+	background-color: var(--third-black-color);
+}
+
+.boxes-content::-webkit-scrollbar-thumb:hover {
+	background-color: rgba(47, 47, 47, 0.75);
 }
 
 .boxes-header {
@@ -60,6 +84,7 @@
 	transition: all 0.3s ease;
 	font-weight: 700;
 	font-family: "Mona Sans Variable", sans-serif;
+	outline: none;
 }
 
 .boxes-header button:hover {
@@ -68,10 +93,22 @@
 }
 
 .boxes-content {
+	max-height: 616px;
 	width: 100%;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	flex-wrap: wrap;
 	gap: 1em;
+	overflow: auto;
+	transition: padding-right 0.05s linear;
+}
+
+.boxes-content:hover {
+	padding-right: 0.5em;
+	/* justify-content: flex-start; */
+}
+
+.boxes-conten .box-buttons button {
+	outline: none;
 }

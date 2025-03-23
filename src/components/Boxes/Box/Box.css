@@ -3,10 +3,11 @@
 	flex-direction: column;
 	justify-content: space-between;
 	padding: 1.5em;
-	flex: 0 0 384px;
+	flex: 0 0 calc(33.33% - (2em / 3));
 	background-color: rgba(255, 255, 255, 0.1);
 	border-radius: 24px;
 	min-height: 300px;
+	transition: all 0.3s ease-in-out;
 }
 
 .box-header {
@@ -66,4 +67,27 @@
 
 .box-icon-button:hover {
 	color: var(--third-bg-color);
+}
+
+.delete-header {
+	color: var(--third-bg-color);
+	margin-bottom: 0.25rem;
+}
+
+.delete-paragraphs {
+	color: var(--white-color);
+	text-align: center;
+	margin-bottom: 1rem;
+}
+
+.edit-header,
+.add-header {
+	color: var(--white-color);
+}
+
+.delete-icon {
+	font-size: 4rem;
+	background-color: var(--third-bg-color);
+	margin-bottom: 1rem;
+	border-radius: 12px;
 }

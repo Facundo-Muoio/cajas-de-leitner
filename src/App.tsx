@@ -7,41 +7,26 @@ import Login from "./components/Login/Login";
 import ResetPasswordForm from "./components/ResetPasswordForm/ResetPasswordForm";
 import UpdatePassword from "./components/UpdatePassword/UpdatePassword";
 import Boxes from "./components/Boxes/Boxes";
-import Box from "./components/Boxes/Box/Box";
+import { UserContextProvider } from "./Contexts/UserContext";
 
 function App() {
 	return (
 		<>
-			<BrowserRouter>
-				<Routes>
-					<Route path="/login" element={<Login />} />
-					<Route path="/signup" element={<Signup />} />
-					<Route path="/reset-password" element={<ResetPasswordForm />} />
-					<Route path="/update-password" element={<UpdatePassword />} />
-					<Route path="/confirm-user" element={<ConfirmEmail />} />
-				</Routes>
-				<Routes>
-					<Route path="/dashboard" element={<Dashboard />} />
-					<Route
-						path="/boxes"
-						element={
-							<Boxes>
-								<Box nameOfBox="Matemáticas" numberOfCards={15} />
-								<Box
-									nameOfBox="Sistemas Tácticos"
-									numberOfCards={23}
-									description="posicionamientos tácticos en ataque y defensa"
-								/>
-								<Box
-									nameOfBox="Cocina"
-									numberOfCards={11}
-									description="Recetas impresindibles para mi casa"
-								/>
-							</Boxes>
-						}
-					/>
-				</Routes>
-			</BrowserRouter>
+			<UserContextProvider>
+				<BrowserRouter>
+					<Routes>
+						<Route path="/login" element={<Login />} />
+						<Route path="/signup" element={<Signup />} />
+						<Route path="/reset-password" element={<ResetPasswordForm />} />
+						<Route path="/update-password" element={<UpdatePassword />} />
+						<Route path="/confirm-user" element={<ConfirmEmail />} />
+
+						<Route path="/dashboard" element={<Dashboard />} />
+						<Route path="/boxes" element={<Boxes />} />
+					</Routes>
+				</BrowserRouter>
+			</UserContextProvider>
+
 			{/* <LayoutAccount
 				src="./src/assets/images/tree-primary.webp"
 				alt="arbol con hojas y notas"

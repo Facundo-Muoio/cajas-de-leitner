@@ -1,86 +1,101 @@
-form {
+.form-generic {
 	width: 100%;
-	max-width: 500px;
+}
+
+.fieldGroup {
+	width: 100%;
 	height: auto;
-	margin: auto;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	gap: 1.5rem;
-	align-items: center;
-	font-size: 1.25rem;
+	margin-bottom: 1em;
+}
+
+.form-generic h2 {
 	color: var(--white-color);
+	margin-bottom: 1rem;
+	text-align: center;
+}
+
+.fieldGroup label {
+	color: var(--grey-bg-color);
+	font-size: 0.875rem;
+	margin-left: 0.5em;
+}
+
+.fieldGroup input,
+.fieldGroup textarea {
+	background-color: var(--third-black-color);
+	border: 1px solid var(--grey-bg-color);
 	border-radius: 24px;
-	background-color: var(--secondary-black-color);
-	/* border: 1px solid var(--primary-bg-color);
-	box-shadow: 0px 8px 15px 0px rgba(0, 0, 0, 0.3); */
-}
-
-form .fieldGroup {
-	position: relative;
-	width: 100%;
-	max-width: 320px;
-	animation: fadeInBtm 1s ease;
-}
-
-.btn-submit {
-	width: 100%;
-	max-width: 320px;
-}
-
-form .fieldGroup input {
-	background-color: transparent;
-	border: 1px solid #6c757d;
-	border-radius: 12px;
 	outline: none;
-	padding: 0.5em;
-	width: 100%;
+	padding: 0.5em 1em;
+	color: var(--white-color);
+	transition: all 0.3s ease;
 }
 
-form .fieldGroup input:focus {
+.fieldGroup textarea {
+	border-radius: 12px;
+	resize: none;
+	font-family: "Mona Sans Variable";
+}
+
+.fieldGroup input:focus,
+.fieldGroup textarea:focus {
 	border: 1px solid var(--white-color);
 }
 
-form .fieldGroup label {
-	color: #6c757d;
-	transition: all 0.3s ease;
-	position: absolute;
-	top: 8px;
-	left: 8px;
+.fieldGroup label:has(+ input:focus),
+.fieldGroup label:has(+ textarea:focus) {
+	color: var(--white-color);
 }
 
-form .fieldGroup input:focus + label,
-form .fieldGroup input:valid + label {
-	top: -11px;
-	left: 8px;
-	font-size: 16px;
-	color: var(--white-color); /* Gris más oscuro */
-	background-color: var(--secondary-black-color);
-	padding-inline: 4px;
-	border-radius: none;
-}
-
-form .fieldGroup input:valid + label {
-	color: #6c757d;
-}
-
-form .fieldGroup input[type="date"]::-webkit-calendar-picker-indicator {
-	display: none;
-}
-
-form button[type="submit"] {
-	border-radius: 12px;
-	background-color: var(--third-bg-color);
+.form-generic button {
 	width: 100%;
-	padding: 0.5em;
+	border-radius: 24px;
+	padding: 0.5em 1em;
+	background-color: var(--third-bg-color);
+	border: none;
 	cursor: pointer;
+	font-weight: 700;
+	font-family: "Mona Sans Variable";
 	outline: none;
-	color: var(--primary-bg-color);
-	animation: fadeInBtm 1s ease;
 }
 
-.btn-submit[disabled] {
-	background-color: var(--third-bg-color);
-	cursor: not-allowed;
-	opacity: 0.6;
+.fieldGroup textarea::-webkit-scrollbar {
+	width: 6px; /* Ancho de la scrollbar vertical */
+	height: fit-content;
+	margin-right: 0.2em;
+}
+
+.fieldGroup textarea::-webkit-scrollbar-track {
+	width: 0.05em;
+	border-radius: 12px;
+}
+
+.fieldGroup textarea:hover::-webkit-scrollbar-thumb {
+	background: rgba(0, 0, 0, 0.2);
+	border-radius: 12px;
+	transition: background 0.3s ease-in-out;
+	cursor: pointer;
+}
+
+.fieldGroup textarea::-webkit-scrollbar-thumb:hover {
+	background: rgba(0, 0, 0, 0.4);
+}
+
+.fieldGroup-error input {
+	border-color: var(--third-bg-color) !important;
+}
+
+.fieldGroup-error label {
+	color: var(--third-bg-color) !important;
+}
+
+.fieldGroup .error-message {
+	margin-left: 0.5rem;
+}
+
+.form-generic .error-message {
+	margin-bottom: 0.25rem;
 }

@@ -1,0 +1,15 @@
+.container-alert-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: var(--white-color);
+	max-width: 400px;
+	gap: 1rem;
+	padding: 1em;
+}
+
+.container-alert-form .icon-alert-form {
+	font-size: 4rem;
+	color: var(--third-bg-color);
+}
