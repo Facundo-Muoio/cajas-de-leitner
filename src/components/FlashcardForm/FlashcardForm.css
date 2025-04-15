@@ -1,0 +1,183 @@
+#form-flashcard {
+	background-color: var(--white-color);
+	color: var(--primary-bg-color);
+	font-family: "Mona Sans Variable";
+	display: flex;
+	flex-direction: column;
+	width: fit-content;
+	justify-content: space-around;
+	gap: 1.5em;
+	padding: 3.5em;
+	border-radius: 24px;
+	margin: 0 auto;
+	width: 100%;
+	overflow: auto;
+	max-width: 1250px;
+	margin-block: 5vh;
+	overflow-y: auto;
+}
+
+#form-flashcard input,
+#form-flashcard select {
+	color: var(--primary-bg-color);
+	background-color: transparent;
+	outline: none;
+	border: 1.5px solid var(--grey-bg-color);
+	border-radius: 24px;
+	padding: 0.5em 1.5em;
+	width: 100%;
+	font-family: "Mona Sans Variable";
+}
+
+.label-form-flashcard {
+	padding-left: 0.5em;
+	margin-bottom: 0.05em;
+	color: var(--primary-bg-color);
+}
+
+#form-flashcard .fieldGroup input:focus:has(~ label) {
+	color: red;
+}
+
+#form-flashcard option {
+	color: black;
+}
+
+#form-flashcard input[type="radio"] {
+	width: fit-content;
+}
+
+#form-flashcard input:focus,
+#form-flashcard select:focus {
+	border-color: var(--primary-bg-color);
+}
+
+#form-flashcard fieldset {
+	padding: 1em;
+	display: flex;
+	gap: 2rem;
+}
+
+#form-flashcard legend {
+	margin-left: 0.5em;
+	padding-inline: 4px;
+}
+
+#form-flashcard fieldset label {
+	cursor: pointer;
+	margin-right: 0.5em;
+}
+
+.form-group {
+	display: flex;
+	flex-direction: column;
+}
+
+#form-flashcard button {
+	width: fit-content;
+	padding: 0.5em 1em;
+	background-color: transparent;
+	border: 1.5px solid var(--primary-bg-color);
+	border-radius: 24px;
+	color: var(--primary-bg-color);
+	cursor: pointer;
+	font-family: "Mona Sans Variable";
+	font-weight: 500;
+	outline: none;
+}
+
+#form-flashcard button:hover {
+	background-color: var(--third-bg-color);
+	color: var(--primary-bg-color);
+}
+
+#input-option {
+	width: 50% !important;
+	margin: 1em;
+}
+
+#form-flashcard input[type="checkbox"] {
+	width: fit-content;
+}
+
+.fr-toolbar button {
+	background-color: var(--white-color) !important;
+	border: 0px !important;
+}
+
+.current-tags {
+	margin-top: 0.25em;
+	display: flex;
+	gap: 0.25em;
+}
+
+.tag {
+	background-color: var(--third-bg-color);
+	border-radius: 6px;
+	padding: 0.25em;
+	font-size: 0.875em;
+	display: flex;
+	align-items: center;
+	vertical-align: center;
+}
+
+.button-tags {
+	border: 0px !important;
+	margin-left: 2px !important;
+	padding: 0 !important;
+	display: flex;
+}
+
+#fr-logo {
+	visibility: hidden !important;
+}
+
+#form-flashcard::-webkit-scrollbar {
+	height: 0.25em;
+	margin-right: 1rem;
+}
+
+#form-flashcard::-webkit-scrollbar-track {
+	background: transparent;
+	border-radius: 24px;
+	margin-right: 1rem;
+	padding-right: 1rem;
+}
+
+#form-flashcard:hover::-webkit-scrollbar-thumb {
+	background: rgba(0, 0, 0, 0.2);
+	border-radius: 24px;
+	transition: background 0.3s ease-in-out;
+	cursor: pointer;
+}
+
+#form-flashcard::-webkit-scrollbar-thumb:hover {
+	background: rgba(0, 0, 0, 0.4);
+}
+
+.error-form-flashcard {
+	color: #d32f2f;
+	font-size: 0.875em;
+	margin-top: 4px;
+	margin-left: 0.5em;
+}
+
+.has-error {
+	border: 1px solid #d32f2f !important;
+}
+
+.has-error::placeholder,
+.label-error {
+	color: #d32f2f;
+}
+
+.fieldset-error {
+	color: #d32f2f;
+	border: 1px solid #d32f2f;
+}
+
+.question-error > div:nth-child(2),
+.answer-error > div:nth-child(2) {
+	border: 1px solid #d32f2f;
+	color: #d32f2f;
+}

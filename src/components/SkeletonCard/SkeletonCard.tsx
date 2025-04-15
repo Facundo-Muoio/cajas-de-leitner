@@ -17,7 +17,7 @@ export default function SkeletonCard() {
 			</div>
 			<div className="skeleton-footer">
 				<Skeleton width="20%" height="1.375rem" borderRadius="2px" />
-				<Skeleton width="20%" height="2.25rem" />
+				<Skeleton width="27%" height="2.25rem" />
 			</div>
 		</div>
 	);

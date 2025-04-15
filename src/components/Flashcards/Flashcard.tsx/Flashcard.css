@@ -1,0 +1,101 @@
+.flashcard {
+	width: 100%;
+	background-color: var(--third-black-color);
+	padding: 0.75em;
+	gap: 1em;
+	border-radius: 12px;
+	color: var(--white-color);
+}
+
+.index-flashcard {
+	font-size: 1.5rem;
+	color: var(--third-bg-color);
+}
+
+.header-flascard {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 1rem;
+}
+
+.flashcard-title {
+	color: var(--grey-bg-color);
+	font-weight: 400;
+}
+
+.tags-flashcard {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.25em;
+	flex-grow: 1;
+	transition: opacity 0.3s ease-in-out;
+}
+
+.tags-flashcard .tag {
+	border-radius: 24px;
+	background-color: var(--third-bg-color);
+	border: 1px solid var(--third-bg-color);
+	color: var(--primary-bg-color);
+	font-size: 0.75rem;
+	padding: 0.1em 0.5em;
+}
+
+.controls-flashcard {
+	margin-left: auto;
+}
+
+.question-flashcard .pregunta {
+	margin-left: 1.75rem;
+}
+
+.controls-flashcard button {
+	background-color: transparent;
+	color: var(--third-bg-color);
+	border: none;
+	font-size: 1rem;
+	cursor: pointer;
+}
+
+.controls-flashcard button:not(:last-child) {
+	margin-right: 16px;
+}
+
+.answer-flashcard {
+	margin-top: 1rem;
+	visibility: hidden;
+	opacity: 0;
+	max-height: 0;
+	transition: max-height 0.5s ease-in-out, opacity 0.4s ease-in-out,
+		visibility 0.4s ease-in-out;
+}
+
+.answer-flashcard.show-answer {
+	max-height: 325px;
+	opacity: 1;
+	visibility: visible;
+}
+
+.answer-flashcard .flashcard-title {
+	margin-left: 1.5rem;
+}
+
+.respuesta {
+	max-height: 300px;
+	overflow-y: auto;
+	margin-left: 1.5rem;
+	margin-bottom: 1em;
+}
+
+.flashcard .respuesta::-webkit-scrollbar {
+	width: 6px;
+}
+.flashcard .respuesta::-webkit-scrollbar-thumb {
+	background-color: var(--third-bg-color);
+	border-radius: 24px;
+}
+
+.hidden-tags {
+	opacity: 0;
+}

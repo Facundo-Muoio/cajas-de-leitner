@@ -1,0 +1,126 @@
+.container-revisions-flashcards {
+	background-color: var(--primary-bg-color);
+	color: var(--white-color);
+	border-radius: 24px;
+	padding: 2em;
+	max-width: 500px;
+	max-height: 68vh;
+	min-height: 68vh;
+	margin-inline: auto;
+	margin-block: 16vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 1em;
+}
+
+.header-flashcard {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.header-flashcard button,
+.footer-flashcard button {
+	background-color: transparent;
+	color: var(--third-bg-color);
+	border: 2px solid var(--third-bg-color);
+	border-radius: 50%;
+	padding: 0.5em;
+	cursor: pointer;
+}
+
+.header-flashcard button svg,
+.footer-flashcard button svg {
+	font-size: 2rem;
+}
+
+.footer-flashcard {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 1em;
+}
+
+.footer-flashcard button {
+	padding: 0.75em;
+}
+
+.icon-flashcard.like,
+.btn-like {
+	color: #00ff88;
+	border-color: #00ff88 !important;
+}
+
+.icon-flashcard.dislike,
+.btn-dislike {
+	color: #ff0000;
+	border-color: #ff0000 !important;
+}
+
+.count-flashcards {
+	font-family: "Mona Sans Variable";
+	font-size: 2rem;
+	color: var(--white-color);
+}
+
+.content-flashcard {
+	flex-grow: 1;
+	overflow-y: auto;
+}
+
+.btn-next-flashcard {
+	background-color: transparent;
+	color: var(--third-bg-color);
+	border: 2px solid var(--third-bg-color);
+	border-radius: 24px;
+	padding: 0.5em;
+	cursor: pointer;
+	font-weight: 500;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 1em;
+	width: fit-content;
+	margin-left: auto;
+	font-size: 1rem;
+	font-weight: 700;
+}
+
+button.btn-true,
+button.btn-false {
+	border-radius: 24px;
+	min-width: 100px;
+	font-weight: 600;
+	font-size: 1rem;
+	transition: all 0.25s linear;
+}
+
+button.btn-true {
+	border-color: #00ff88;
+	color: #00ff88;
+}
+
+button.btn-false {
+	border-color: #ff0000;
+	color: #ff0000;
+}
+
+button.btn-true:hover {
+	background-color: #00ff88 !important;
+	color: var(--primary-bg-color) !important;
+}
+
+button.btn-false:hover {
+	background-color: #ff0000 !important;
+	color: var(--primary-bg-color) !important;
+}
+
+.btn-flashcard-option {
+	font-size: 1rem !important;
+}
+/* .btn-view {
+	color: var(--white-color) !important;
+	border-color: var(--white-color) !important;
+} */

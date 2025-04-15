@@ -1,0 +1,48 @@
+.skeleton-flashcard {
+	width: 100%;
+	background-color: var(--third-black-color);
+	padding: 0.75em;
+	gap: 1em;
+	border-radius: 12px;
+}
+
+.header-skeleton-flashcard {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 1rem;
+	margin-bottom: 0.5em;
+}
+
+.skeleton-index-flashcard {
+	width: 10px;
+	height: 28px;
+	display: flex;
+	align-items: center;
+}
+
+.skeleton-flashcard-title {
+	width: 80px;
+	height: 28px;
+	display: flex;
+	align-items: center;
+}
+
+.skeleton-tags-flashcard {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.25em;
+	flex-grow: 1;
+}
+
+.skeleton-control-flashcard {
+	margin-left: auto;
+	display: flex;
+	gap: 1em;
+}
+
+.skeleton-question-flashcard .skeleton {
+	margin-left: 1.65rem;
+	margin-bottom: 0.5em;
+}

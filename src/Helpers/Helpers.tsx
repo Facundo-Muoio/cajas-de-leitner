@@ -1,11 +1,7 @@
 import { FieldValues } from "react-hook-form";
 import { supabase } from "../supabase/client";
-import { Deck } from "@/components/Boxes/Boxes";
-
-// import { useContext } from "react";
-// import { UserContext } from "@/Contexts/UserContext";
-
-// const userContext = useContext(UserContext);
+import { DeckInterface } from "@/components/Decks/Decks";
+import { Decks } from "@/components/PanelRevisions/PanelReviews";
 
 export type Day =
 	| "Domingo"
@@ -160,11 +156,26 @@ export async function getOneRow(
 		.eq("user_id", userID)
 		.ilike(nameOfColumn, valueOfColumn)
 		.single();
-	if (error) throw error;
+	if (error) {
+		console.error(error);
+		return false;
+	}
 	return data;
 }
 
-export async function getAllRows(table: string) {
+export async function getAllRows(table: string, deck_id?: string) {
+	if (deck_id) {
+		const { data, error } = await supabase
+			.from(table)
+			.select("*")
+			.eq("deck_id", deck_id)
+			.order("created_at");
+		if (error) {
+			console.error(error.name, error.message);
+			throw error;
+		}
+		return data;
+	}
 	const { data, error } = await supabase
 		.from(table)
 		.select("*")
@@ -190,10 +201,19 @@ export async function getPaginatedRows(
 		.select("*")
 		.eq("user_id", await getUserID())
 		.order("created_at")
-		.range(from, to);
+		.range(0, to);
 
 	if (error) throw error;
 	return data;
+}
+
+export async function getPages(table: string, user_id: string) {
+	const { count, error } = await supabase
+		.from(table)
+		.select("*", { count: "exact", head: true })
+		.eq("user_id", user_id);
+	if (error) throw error;
+	return count;
 }
 
 // export async function getSomeRows(table: string, columns: string[]) {
@@ -206,13 +226,12 @@ export async function getPaginatedRows(
 // 	}
 // }
 
-export async function insertRow<T>(table: string, fields: T[]): Promise<T[]> {
+export async function insertRow(table: string, fields: FieldValues) {
 	const { data, error } = await supabase.from(table).insert(fields).select();
 	if (error) {
 		console.error(error);
 		throw error;
 	}
-	// mutate(table);
 	return data;
 }
 
@@ -234,7 +253,7 @@ export async function updateRow(
 	return data;
 }
 
-export async function deleteRow(table: string, id: string): Promise<Deck[]> {
+export async function deleteRow(table: string, id: string) {
 	const { data, error } = await supabase
 		.from(table)
 		.delete()
@@ -249,8 +268,8 @@ export async function deleteRow(table: string, id: string): Promise<Deck[]> {
 }
 
 export function doesDeckExist(
-	column: keyof Deck,
-	table: Deck[],
+	column: keyof DeckInterface,
+	table: DeckInterface[],
 	columnValue: string,
 	id?: string
 ) {
@@ -267,32 +286,100 @@ export function doesDeckExist(
 	);
 }
 
-export async function alreadyExists(
-	someValue: string,
-	table: string,
-	column: string,
-	id?: string
-) {
-	const query = supabase
-		.from(table)
-		.select(column)
-		.eq("user_id", await getUserID())
-		.ilike(column, someValue)
-		.limit(1);
+export async function getDecksWithCountsFlashcards(): Promise<Decks[]> {
+	const { data, error } = await supabase
+		.from("decks_flashcards_counts")
+		.select("*")
+		.order("deck_name");
 
-	if (id) {
-		query.neq("id", id);
+	if (error || !data) {
+		console.error("Error fetching view decks with counts flashcards", error);
+		return [];
 	}
 
-	const { data, error } = await query;
+	return data as Decks[];
+}
+
+export async function getDecksWithPendingFlashcards(): Promise<Decks[]> {
+	const { data, error } = await supabase
+		.from("decks_flashcards_counts")
+		.select("*")
+		.gt("pending_flashcards_count", 0)
+		.order("deck_name");
+
+	if (error || !data) {
+		console.error("Error fetching view decks with counts flashcards", error);
+		return [];
+	}
+	return data as Decks[];
+}
+
+export async function getAmountOfFlashcardsByBoxLevel(deckId: string) {
+	const { data, error } = await supabase.rpc("contar_flashcards_por_nivel", {
+		id_deck_buscado: deckId,
+	});
+	if (error) {
+		console.error(error);
+	}
+	return data;
+}
+
+export async function getFlashcardsPendigs(deckId: string, boxLevel: number) {
+	const { data, error } = await supabase
+		.from("flashcards")
+		.select("*")
+		.eq("deck_id", deckId)
+		.eq("box_level", boxLevel)
+		.lte("next_review_at", new Date().toISOString());
 
 	if (error) {
-		console.log(error);
-		return error;
+		console.error("Error fetching flashcards", error);
 	}
 
-	return data.length > 0;
+	return data;
 }
+
+export function transformStringToArray(string: string): string[] {
+	const newArray = string.split(",").map(word => word.trim().toLowerCase());
+	return newArray;
+}
+
+export function transformArrayToString(arr: string[]): string {
+	const newString = arr.join("<br />");
+	console.log(newString);
+	return newString;
+}
+
+// export function questionFillToAnswer(question: string, answer: string) {
+// 	const textQuestion = question.split("").join()
+// }
+
+// export async function alreadyExists(
+// 	someValue: string,
+// 	table: string,
+// 	column: string,
+// 	id?: string
+// ) {
+// 	const query = supabase
+// 		.from(table)
+// 		.select(column)
+// 		.eq("user_id", await getUserID())
+// 		.ilike(column, someValue)
+// 		.limit(1);
+
+// 	if (id) {
+// 		query.neq("id", id);
+// 	}
+
+// 	const { data, error } = await query;
+
+// 	if (error) {
+// 		console.log(error);
+// 		return error;
+// 	}
+
+// 	return data.length > 0;
+// }
 
 // export async function updateSomeRows(table: string, newValues: object[]) {
 // 		const { data, error } = await supabase

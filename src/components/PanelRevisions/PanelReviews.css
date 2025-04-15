@@ -1,0 +1,164 @@
+.panel-reviews {
+	background-color: var(--primary-bg-color);
+	width: 100%;
+	max-width: 1250px;
+	max-height: 95vh;
+	min-height: 95vh;
+	display: flex;
+	flex-direction: column;
+	margin-block: 2.5vh;
+	margin-inline: auto;
+	border-radius: 24px;
+	gap: 2rem;
+	padding: 2em;
+	color: var(--white-color);
+	overflow: hidden;
+}
+
+.header-panel-reviews h2 {
+	margin-bottom: 1.5rem;
+}
+
+.container-modes {
+	display: flex;
+	gap: 1em;
+	margin-top: 1rem;
+}
+
+.card-mode-review {
+	display: flex;
+	flex-direction: column;
+	padding: 1em;
+	border: 2px solid var(--third-bg-color);
+	border-radius: 12px;
+	align-items: center;
+	gap: 0.5em;
+	flex: 0 0 225px;
+	cursor: pointer;
+}
+
+.icon-mode {
+	font-size: 1.5rem;
+}
+
+.btn-start-review {
+	width: 100%;
+	border: 2px solid var(--third-bg-color);
+	background-color: var(--third-bg-color);
+	color: var(--primary-bg-color);
+	border-radius: 12px;
+	padding: 1em;
+	font-family: "Mona Sans Variable", sans-serif;
+	font-weight: 700;
+	cursor: pointer;
+	align-self: flex-end;
+	margin-top: auto;
+}
+
+.panel-revies-content {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+}
+
+.header-content-reviews {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.decks-container-reviews {
+	overflow-y: auto;
+	max-height: 400px;
+	transition: padding-right 0.05s linear;
+	display: flex;
+	flex-direction: column;
+
+	flex: 1;
+}
+
+.decks-container-reviews:hover {
+	padding-right: 0.5em;
+}
+
+.decks-container-reviews::-webkit-scrollbar {
+	width: 0;
+}
+
+.decks-container-reviews:hover::-webkit-scrollbar {
+	width: 0.25em;
+}
+
+.decks-container-reviews::-webkit-scrollbar-thumb {
+	background-color: var(--third-bg-color);
+	border-radius: 12px;
+}
+
+.selected {
+	background-color: var(--third-bg-color);
+	color: var(--primary-bg-color);
+}
+
+.decks-container-reviews > .card_deck {
+	padding: 0.5em;
+	border-bottom: 1px solid var(--grey-bg-color);
+}
+
+.decks-container-reviews > .card_deck > .deck_name {
+	font-weight: 600;
+}
+
+.decks-container-reviews > .card_deck > span {
+	color: var(--grey-bg-color);
+	font-weight: 400;
+}
+
+.decks-container-reviews > .card_deck.selected {
+	background-color: var(--third-bg-color);
+	opacity: 0.9;
+	color: var(--primary-bg-color);
+	border: none;
+}
+
+.decks-container-reviews > .card_deck.selected > span {
+	color: #1e3440;
+}
+
+.decks-container-reviews > .card_deck:hover {
+	cursor: pointer;
+}
+
+.input-search-reviews {
+	padding: 0.25em 1.75em;
+	font-size: 0.875rem;
+}
+
+.input-search-reviews::placeholder {
+	font-size: 0.875rem;
+	padding-left: 4px;
+}
+
+.input-search-reviews + .search-button .search-icon {
+	font-size: 1rem !important;
+	margin-inline: 0.5em;
+}
+
+.input-search-reviews ~ .search-close-button .search-close-icon {
+	font-size: 1rem !important;
+	margin-inline: 0.5em;
+}
+
+.input-search-reviews.error::placeholder {
+	content: "Mazo no encontrado";
+}
+
+.decks-reviews-notfounds {
+	width: fit-content;
+	margin-inline: auto;
+	margin-block: auto;
+}
+
+.decks-container-reviews l-tailspin {
+	margin-inline: auto;
+	margin-block: auto;
+}

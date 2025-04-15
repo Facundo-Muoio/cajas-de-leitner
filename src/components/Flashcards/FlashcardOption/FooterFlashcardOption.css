@@ -1,0 +1,20 @@
+.footer-options {
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.footer-options label {
+	cursor: pointer;
+}
+
+.footer-options input[type="checkbox"] {
+	margin-left: 0.5em;
+}
+
+.btn-flashcard-option {
+	width: fit-content;
+	margin-inline: auto;
+	border-radius: 24px !important;
+	font-weight: 700;
+}

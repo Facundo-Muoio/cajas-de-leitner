@@ -1,4 +1,4 @@
-.box {
+.deck {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -6,30 +6,33 @@
 	flex: 0 0 calc(33.33% - (2em / 3));
 	background-color: rgba(255, 255, 255, 0.1);
 	border-radius: 24px;
-	min-height: 300px;
+	height: 300px;
+	/* min-width: calc(33.33% - 1em); */
+	gap: 1em;
+	min-width: calc(33.33% - (2em / 3));
 	transition: all 0.3s ease-in-out;
 }
 
-.box-header {
+.deck-header {
 	display: flex;
 	justify-content: space-between;
 }
 
-.box-header h2 {
+.deck-header h2 {
 	font-size: 1.25rem;
 	font-weight: 500;
 }
 
-.box-header button:first-child {
+.deck-header button:first-child {
 	margin-right: 0.5em;
 }
 
-.box-content {
+.deck-content {
 	font-size: 0.85rem;
 	color: var(--grey-bg-color);
 }
 
-.box-footer {
+.deck-footer {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -37,11 +40,11 @@
 	padding-top: 1.5em;
 }
 
-.box-footer span {
+.deck-footer span {
 	font-weight: 500;
 }
 
-.box-footer button {
+.deck-footer button {
 	font-family: "Mona Sans Variable";
 	font-weight: 500;
 	border: 2px solid var(--third-bg-color);
@@ -52,20 +55,20 @@
 	cursor: pointer;
 }
 
-.box-buttons button {
+.deck-buttons button {
 	border: none;
 	padding: 0.25em;
 	background-color: transparent;
 }
 
-.box-icon-button {
+.deck-icon-button {
 	font-size: 1rem;
 	color: var(--third-bg-color);
 	cursor: pointer;
 	background-color: transparent;
 }
 
-.box-icon-button:hover {
+.deck-icon-button:hover {
 	color: var(--third-bg-color);
 }
 

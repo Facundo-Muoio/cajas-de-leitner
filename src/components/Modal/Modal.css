@@ -7,8 +7,8 @@
 }
 
 .modal {
-	width: 100%;
 	max-width: 450px;
+	min-width: 450px;
 	height: fit-content;
 	left: 50%;
 	top: 50%;

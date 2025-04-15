@@ -48,7 +48,7 @@ export default function Form({
 	const {
 		register,
 		handleSubmit,
-		formState: { errors, isSubmitting },
+		formState: { errors, isLoading },
 		reset,
 	} = useForm({
 		resolver: zodResolver(schema),
@@ -67,6 +67,7 @@ export default function Form({
 			setIsModalOpen(false);
 		}
 		if (setAlertVisible) {
+			console.log("setAlertVisible");
 			setAlertVisible(true);
 		}
 		reset();
@@ -107,7 +108,7 @@ export default function Form({
 				</div>
 			))}
 			<button type="submit" disabled={Object.keys(errors).length > 0}>
-				{isSubmitting ? <Loader /> : labelButton}
+				{isLoading ? <Loader /> : labelButton}
 			</button>
 			{error && <p className="error-message">{error}</p>}
 		</form>

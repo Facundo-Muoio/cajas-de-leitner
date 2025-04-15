@@ -11,16 +11,15 @@
 	border-radius: 24px;
 	outline: none;
 	border: none;
-	width: 400px;
+	width: 405px;
 	font-size: 1rem;
 	border: 2px solid transparent;
 	transition: border 0.3s ease;
 }
 
 .search-input::placeholder {
-	/* Cambia el color del placeholder */
-	font-size: 1rem; /* Cambia el tamaño de la fuente del placeholder */
-	font-weight: 500; /* Opcional: cambia el estilo de la fuente (ej. cursiva) */
+	font-size: 1rem;
+	font-weight: 500;
 }
 
 .search-input::-webkit-search-cancel-button {
@@ -36,6 +35,28 @@
 	border: none !important;
 	padding: none !important;
 	background-color: transparent !important;
+	outline: none;
+}
+
+.search-close-button {
+	visibility: hidden;
+	opacity: 0;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 0.75em;
+	background-color: transparent !important;
+	border: none !important;
+	z-index: 1000;
+}
+
+button.visible {
+	animation: fadeIn 0.3s linear forwards;
+}
+
+.search-close-icon {
+	font-size: 1.5rem;
+	color: var(--grey-bg-color);
 }
 
 .search-icon {
@@ -54,4 +75,11 @@
 
 .search-input:focus + .search-button .search-icon {
 	color: var(--third-bg-color) !important;
+}
+
+.error-sarch-input {
+	position: absolute;
+	bottom: -1.5em;
+	left: 2.5em;
+	color: var(--third-bg-color);
 }
