@@ -1,18 +1,22 @@
 interface FooterFlashcardTrueFalseProps {
 	answer: string;
 	setAnswerView: React.Dispatch<React.SetStateAction<boolean>>;
+	setAnswerIsCorrect: React.Dispatch<React.SetStateAction<boolean | undefined>>;
 }
 
 export default function FooterFlashcardTrueFalse({
 	answer,
 	setAnswerView,
+	setAnswerIsCorrect,
 }: FooterFlashcardTrueFalseProps) {
 	const handleAnswer = (valueSelected: string) => {
 		setAnswerView(true);
 		if (answer === valueSelected) {
-			return true;
+			setAnswerIsCorrect(true);
+			return;
 		}
-		return false;
+		setAnswerIsCorrect(false);
+		return;
 	};
 
 	return (

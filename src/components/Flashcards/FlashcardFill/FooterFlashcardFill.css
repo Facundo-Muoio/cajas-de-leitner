@@ -1,0 +1,32 @@
+.footer-flashcard-fill-answer {
+	display: flex;
+	flex-direction: row;
+	gap: 1em;
+	align-items: center;
+}
+
+.footer-flashcard-fill-answer > input {
+	background-color: transparent;
+	border: 2px solid var(--grey-bg-color);
+	border-radius: 24px;
+	padding: 0.25em 1em;
+	flex-grow: 1;
+	outline: none;
+	color: var(--white-color);
+	font-family: "Mona Sans Variable";
+	transition: border-color 0.2s linear;
+}
+
+.footer-flashcard-fill-answer > input:focus {
+	border-color: var(--third-bg-color);
+}
+
+.footer-flashcard-fill-answer > button.btn-check-fill {
+	background-color: transparent;
+	border: 2px solid var(--third-bg-color);
+	padding: 0.25em 1em;
+	border-radius: 12px;
+	color: var(--white-color);
+	font-family: "Mona Sans Variable";
+	cursor: pointer;
+}

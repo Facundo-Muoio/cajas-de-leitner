@@ -9,11 +9,13 @@ interface optionsObject {
 type optionProps = {
 	options: optionsObject[];
 	setAnswerView: React.Dispatch<React.SetStateAction<boolean>>;
+	setAnswerIsCorrect: React.Dispatch<React.SetStateAction<boolean | undefined>>;
 };
 
 export default function FooterFlashcardOption({
 	options,
 	setAnswerView,
+	setAnswerIsCorrect,
 }: optionProps) {
 	const [optionsChecked, setOptionsChecked] = useState<string[]>([]);
 
@@ -25,7 +27,9 @@ export default function FooterFlashcardOption({
 		const arrayResult = arrayCorrectOptions
 			.sort()
 			.map((item, i) => (item === optionsChecked[i] ? "true" : "false"));
-		return arrayResult.includes("false") ? false : true;
+		return arrayResult.includes("false")
+			? setAnswerIsCorrect(false)
+			: setAnswerIsCorrect(true);
 	};
 
 	const handleCheckOption = (optionText: string) => {

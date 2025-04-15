@@ -4,6 +4,9 @@ import { useState } from "react";
 import { FaRegLightbulb } from "react-icons/fa";
 import { FaLightbulb } from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa";
+import { BsEmojiLaughing } from "react-icons/bs";
+import { BsEmojiSmileUpsideDown } from "react-icons/bs";
+import { TbBulbFilled } from "react-icons/tb";
 import useFlashcardsPendings from "@/Hooks/useFlashcardsPendings";
 import FooterFlashcardOpen from "../Flashcards/FlashcardOpen/FooterFlashcardOpen";
 import parse from "html-react-parser";
@@ -20,10 +23,13 @@ export default function ViewRevisionBox() {
 	const [currentFlashcard, setCurrentFlashcard] = useState(0);
 	const [viewReverse, setViewReverse] = useState(false);
 	const [answerView, setAnswerView] = useState(false);
+	const [answerIsCorrect, setAnswerIsCorrect] = useState<boolean>();
 	const { flashcards } = useFlashcardsPendings(deck_id!, Number(box_level));
 	const navigate = useNavigate();
 
-	const togleHint = () => setHintOn(!hintOn);
+	const togleHint = () => {
+		setHintOn(!hintOn);
+	};
 	const nextFlashcard = () => {
 		if (flashcards && currentFlashcard + 1 < flashcards?.length) {
 			setCurrentFlashcard(currentFlashcard + 1);
@@ -40,15 +46,28 @@ export default function ViewRevisionBox() {
 				<div className="count-flashcards">
 					{currentFlashcard + 1}/{flashcards?.length}
 				</div>
-				<button onClick={togleHint}>
-					{hintOn ? (
-						<FaLightbulb className="bulb-on" />
-					) : (
-						<FaRegLightbulb className="bulb-off" />
-					)}
-				</button>
+				{flashcards && flashcards[currentFlashcard].hint && (
+					<button onClick={togleHint}>
+						{hintOn ? (
+							<FaLightbulb className="bulb-on" />
+						) : (
+							<FaRegLightbulb className="bulb-off" />
+						)}
+					</button>
+				)}
 			</div>
 			<div className="content-flashcard">
+				{hintOn && (
+					<>
+						<h2 className="header-hint">
+							Pista
+							<TbBulbFilled />
+						</h2>
+						<p className="p-hint">
+							{flashcards && flashcards[currentFlashcard].hint}
+						</p>
+					</>
+				)}
 				<h2>
 					{viewReverse
 						? "Respuesta"
@@ -86,24 +105,46 @@ export default function ViewRevisionBox() {
 				/>
 			)}
 			{answerView ? (
-				<button className="btn-next-flashcard" onClick={nextFlashcard}>
-					Siguiente Tarjeta
-					<FaArrowRight />
-				</button>
+				<div className="footer-flashcard">
+					<p
+						className={
+							answerIsCorrect ? "correct-message" : "incorrect-message"
+						}
+					>
+						{answerIsCorrect ? (
+							<>
+								<BsEmojiLaughing className="correct-icon" />
+								Acertaste, sigue así!
+							</>
+						) : (
+							<>
+								<BsEmojiSmileUpsideDown className="icorrect-icon" />
+								Incorrecto, a repasar!
+							</>
+						)}
+					</p>
+					<button className="btn-next-flashcard" onClick={nextFlashcard}>
+						Siguiente Tarjeta
+						<FaArrowRight />
+					</button>
+				</div>
 			) : flashcards && flashcards[currentFlashcard].type === "truefalse" ? (
 				<FooterFlashcardTrueFalse
 					answer={flashcards[currentFlashcard].true_false_answer}
 					setAnswerView={setAnswerView}
+					setAnswerIsCorrect={setAnswerIsCorrect}
 				/>
 			) : flashcards && flashcards[currentFlashcard].type === "multiple" ? (
 				<FooterFlashcardOption
 					options={flashcards[currentFlashcard].options}
 					setAnswerView={setAnswerView}
+					setAnswerIsCorrect={setAnswerIsCorrect}
 				/>
 			) : flashcards && flashcards[currentFlashcard].type === "fill" ? (
 				<FooterFlashcardFill
 					words={flashcards[currentFlashcard].answer}
 					setAnswerView={setAnswerView}
+					setAnswerIsCorrect={setAnswerIsCorrect}
 				/>
 			) : null}
 		</div>
