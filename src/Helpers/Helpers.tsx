@@ -28,6 +28,11 @@ export type Month =
 
 type WeeksDays = readonly Day[];
 
+interface revision {
+	status: "correct" | "incorrect";
+	flashcard_id: string;
+}
+
 export type AuthProvider = "google" | "facebook" | "github";
 
 export function getDayName(date: Date): Day {
@@ -346,8 +351,46 @@ export function transformStringToArray(string: string): string[] {
 
 export function transformArrayToString(arr: string[]): string {
 	const newString = arr.join("<br />");
-	console.log(newString);
 	return newString;
+}
+
+export function fillEmptysWhiteSpaces(texto: string, palabras: string) {
+	const patron = /_{1,}/g;
+	const arrayPalabras = palabras.split(",");
+	let resultado = texto;
+	let indice = 0;
+
+	resultado = resultado.replace(patron, match => {
+		if (indice >= palabras.length) {
+			return match;
+		}
+
+		const palabra = arrayPalabras[indice];
+
+		indice++;
+
+		return `<span className="resalted">${palabra}</span>`;
+	});
+
+	return resultado;
+}
+
+export function convertHTMLtoPlainText(html: string) {
+	const element = document.createElement("div");
+	element.innerHTML = html;
+	return element.textContent || element.innerText;
+}
+
+export async function insertRevision(revision: revision) {
+	const { data, error } = await supabase
+		.from("revisions")
+		.insert([revision])
+		.select();
+	if (error) {
+		console.error(error, "Error ocurred inserting revision.");
+		throw error;
+	}
+	return data;
 }
 
 // export function questionFillToAnswer(question: string, answer: string) {
@@ -374,7 +417,7 @@ export function transformArrayToString(arr: string[]): string {
 // 	const { data, error } = await query;
 
 // 	if (error) {
-// 		console.log(error);
+// 		s(error);
 // 		return error;
 // 	}
 

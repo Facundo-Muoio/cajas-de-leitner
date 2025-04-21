@@ -1,3 +1,4 @@
+import { insertRevision } from "@/Helpers/Helpers";
 import "./FooterFlashcardOption.css";
 import { useState } from "react";
 
@@ -7,12 +8,14 @@ interface optionsObject {
 }
 
 type optionProps = {
+	flashcard_id: string;
 	options: optionsObject[];
 	setAnswerView: React.Dispatch<React.SetStateAction<boolean>>;
 	setAnswerIsCorrect: React.Dispatch<React.SetStateAction<boolean | undefined>>;
 };
 
 export default function FooterFlashcardOption({
+	flashcard_id,
 	options,
 	setAnswerView,
 	setAnswerIsCorrect,
@@ -27,9 +30,13 @@ export default function FooterFlashcardOption({
 		const arrayResult = arrayCorrectOptions
 			.sort()
 			.map((item, i) => (item === optionsChecked[i] ? "true" : "false"));
-		return arrayResult.includes("false")
-			? setAnswerIsCorrect(false)
-			: setAnswerIsCorrect(true);
+		if (arrayResult.includes("false")) {
+			setAnswerIsCorrect(false);
+			insertRevision({ flashcard_id, status: "incorrect" });
+		} else {
+			setAnswerIsCorrect(true);
+			insertRevision({ flashcard_id, status: "correct" });
+		}
 	};
 
 	const handleCheckOption = (optionText: string) => {

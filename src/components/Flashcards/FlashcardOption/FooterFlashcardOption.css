@@ -1,8 +1,10 @@
 .footer-options {
-	flex-grow: 1;
 	display: flex;
 	align-items: flex-start;
+	justify-content: start;
 	flex-direction: column;
+	overflow-y: auto;
+	padding-bottom: 0.5em;
 }
 
 .footer-options label {
@@ -19,4 +21,19 @@
 	border-radius: 24px !important;
 	font-weight: 700;
 	align-self: center;
+}
+
+.footer-options::-webkit-scrollbar {
+	width: 0.35em;
+}
+
+.footer-options::-webkit-scrollbar-track {
+	background: transparent;
+	border-radius: 24px;
+}
+
+.footer-options::-webkit-scrollbar-thumb {
+	background: var(--third-bg-color);
+	border-radius: 24px;
+	transition: background 0.3s ease-in-out;
 }

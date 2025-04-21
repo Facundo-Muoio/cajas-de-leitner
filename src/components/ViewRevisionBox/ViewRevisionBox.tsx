@@ -13,7 +13,11 @@ import parse from "html-react-parser";
 import FooterFlashcardTrueFalse from "../Flashcards/FlashcardTrueFalse/FooterFlashcardTrueFalse";
 import FooterFlashcardOption from "../Flashcards/FlashcardOption/FooterFlashcardOption";
 import FooterFlashcardFill from "../Flashcards/FlashcardFill/FooterFlashcardFill";
-import { transformArrayToString } from "@/Helpers/Helpers";
+import {
+	convertHTMLtoPlainText,
+	fillEmptysWhiteSpaces,
+	transformArrayToString,
+} from "@/Helpers/Helpers";
 import { useNavigate } from "react-router";
 
 export default function ViewRevisionBox() {
@@ -72,32 +76,42 @@ export default function ViewRevisionBox() {
 					{viewReverse
 						? "Respuesta"
 						: answerView
-						? "Respuesta Correcta"
-						: "Pregunta"}
+							? "Respuesta Correcta"
+							: "Pregunta"}
 				</h2>
 
 				{!answerView && !viewReverse && flashcards
 					? parse(flashcards[currentFlashcard].question)
 					: flashcards && flashcards[currentFlashcard].type === "truefalse"
-					? parse(flashcards[currentFlashcard].true_false_answer)
-					: flashcards && flashcards[currentFlashcard].type === "multiple"
-					? parse(
-							transformArrayToString(
-								flashcards[currentFlashcard].options
-									.filter(
-										(option: { isCorrect: boolean }) =>
-											option.isCorrect === true
+						? parse(flashcards[currentFlashcard].true_false_answer)
+						: flashcards && flashcards[currentFlashcard].type === "multiple"
+							? parse(
+									transformArrayToString(
+										flashcards[currentFlashcard].options
+											.filter(
+												(option: { isCorrect: boolean }) =>
+													option.isCorrect === true
+											)
+											.map((option: { text: string }) => option.text)
 									)
-									.map((option: { text: string }) => option.text)
-							)
-					  )
-					: flashcards && flashcards[currentFlashcard].type === "fill"
-					? parse(flashcards[currentFlashcard].answer)
-					: flashcards && parse(flashcards[currentFlashcard].answer)}
+								)
+							: flashcards && flashcards[currentFlashcard].type === "fill"
+								? parse(
+										fillEmptysWhiteSpaces(
+											convertHTMLtoPlainText(
+												flashcards[currentFlashcard].question
+											),
+											convertHTMLtoPlainText(
+												flashcards[currentFlashcard].answer
+											)
+										)
+									)
+								: flashcards && parse(flashcards[currentFlashcard].answer)}
 			</div>
 
 			{flashcards && flashcards[currentFlashcard].type === "open" && (
 				<FooterFlashcardOpen
+					flashcard_id={flashcards[currentFlashcard].id}
 					viewReverse={viewReverse}
 					setViewReverse={setViewReverse}
 					currentFlashcard={currentFlashcard}
@@ -130,18 +144,21 @@ export default function ViewRevisionBox() {
 				</div>
 			) : flashcards && flashcards[currentFlashcard].type === "truefalse" ? (
 				<FooterFlashcardTrueFalse
+					flashcard_id={flashcards[currentFlashcard].id}
 					answer={flashcards[currentFlashcard].true_false_answer}
 					setAnswerView={setAnswerView}
 					setAnswerIsCorrect={setAnswerIsCorrect}
 				/>
 			) : flashcards && flashcards[currentFlashcard].type === "multiple" ? (
 				<FooterFlashcardOption
+					flashcard_id={flashcards[currentFlashcard].id}
 					options={flashcards[currentFlashcard].options}
 					setAnswerView={setAnswerView}
 					setAnswerIsCorrect={setAnswerIsCorrect}
 				/>
 			) : flashcards && flashcards[currentFlashcard].type === "fill" ? (
 				<FooterFlashcardFill
+					flashcard_id={flashcards[currentFlashcard].id}
 					words={flashcards[currentFlashcard].answer}
 					setAnswerView={setAnswerView}
 					setAnswerIsCorrect={setAnswerIsCorrect}

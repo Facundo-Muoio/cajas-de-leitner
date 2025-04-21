@@ -2,16 +2,18 @@ import "./FooterFlashcardFill.css";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { transformStringToArray } from "@/Helpers/Helpers";
+import { insertRevision, transformStringToArray } from "@/Helpers/Helpers";
 import parse from "html-react-parser";
 
 interface FooterFlashcardFillProps {
+	flashcard_id: string;
 	words: string;
 	setAnswerView: React.Dispatch<React.SetStateAction<boolean>>;
 	setAnswerIsCorrect: React.Dispatch<React.SetStateAction<boolean | undefined>>;
 }
 
 export default function FooterFlashcardFill({
+	flashcard_id,
 	words,
 	setAnswerView,
 	setAnswerIsCorrect,
@@ -44,6 +46,21 @@ export default function FooterFlashcardFill({
 		);
 		setAnswerView(true);
 		console.log(resultArray.some(item => item === false) ? false : true);
+		if (resultArray.some(item => item === false)) {
+			setAnswerIsCorrect(false);
+			const revision = {
+				status: "incorrect" as "incorrect",
+				flashcard_id,
+			};
+			insertRevision(revision);
+		} else {
+			setAnswerIsCorrect(true);
+			const revision = {
+				status: "correct" as "correct",
+				flashcard_id,
+			};
+			insertRevision(revision);
+		}
 		return resultArray.some(item => item === false)
 			? setAnswerIsCorrect(false)
 			: setAnswerIsCorrect(true);

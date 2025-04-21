@@ -89,6 +89,7 @@
 }
 
 .content-flashcard {
+	min-height: fit-content;
 	flex-grow: 1;
 	overflow-y: auto;
 }
@@ -158,4 +159,9 @@ button.btn-false:hover {
 
 .p-hint {
 	color: var(--third-bg-color);
+}
+
+.resalted {
+	font-weight: 700;
+	text-decoration: underline;
 }
